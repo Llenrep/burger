@@ -1,4 +1,4 @@
-var orm = require('./config/orm'); //require the functions from orm
+var orm = require('../config/orm'); //require the functions from orm
 
 
 var burger = {

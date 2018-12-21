@@ -1,13 +1,13 @@
 //requiring express
 var express = require('express');
 
-var route = express.Route();
+var router = express.Router();
 
 //requiring burger.js from models
 var burger = require('../models/burger.js');
 
 
-route.get("/", function(req, res) {
+router.get("/", function(req, res) {
     burger.all(function(data) {
       var hbsObject = {
         burger: data
@@ -17,7 +17,7 @@ route.get("/", function(req, res) {
     });
   });
   
-  route.post("/api/burgers", function(req, res) {
+  router.post("/api/burgers", function(req, res) {
     burger.add([
       "burger_name", "devoured"
     ], [
@@ -28,7 +28,7 @@ route.get("/", function(req, res) {
     });
   });
   
-  route.put("/api/burgers/:id", function(req, res) {
+  router.put("/api/burgers/:id", function(req, res) {
     var condition = "id = " + req.params.id;
   
     console.log("condition", condition);
@@ -45,7 +45,7 @@ route.get("/", function(req, res) {
     });
   });
   
-  route.delete("/api/burgers/:id", function(req, res) {
+  router.delete("/api/burgers/:id", function(req, res) {
     var condition = "id = " + req.params.id;
   
     burger.delete(condition, function(result) {
@@ -59,4 +59,4 @@ route.get("/", function(req, res) {
   });
   
   // Export routes for server.js to use.
-  module.exports = route;
+  module.exports = router;
