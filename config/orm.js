@@ -26,6 +26,15 @@ var orm = {
             console.log("Burger: " + val1 + " Updated!");
             console.log(res);
         })
+    },
+
+    deleteOne: function(tableName, col1, val1) {
+        var queryString = "DELETE FROM ?? WHERE ?? = ?"
+        connection.query(queryString, [tableName, col1, val1], function(err, res){
+            if (err) throw err;
+            console.log("Burger: " + val1 + " Removed!");
+            console.log(res)
+        })
     }
 }
 
